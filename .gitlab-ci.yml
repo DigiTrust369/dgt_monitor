@@ -1,0 +1,25 @@
+include:
+- project: devops/cicd-templates
+  ref: main
+  file: 'docker.gitlab-ci.yml'
+
+unit-test:
+  stage: test
+  tags:
+  - docker
+  image: node:16.19.0
+  rules:
+  - if: $CI_COMMIT_BRANCH
+  variables:
+    NODE_ENV: test
+  before_script:
+  - apt update && apt install redis-server -y
+  - service redis-server start    
+  script:
+  - npm i
+  - npm run test
+  cache:
+    key: "${CI_COMMIT_REF_SLUG}"
+    untracked: true
+    paths:
+    - node_modules/

@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  redis:
+    image: redis
+  crypto-wallet:
+    command: yarn test
+    environment: 
+    - NODE_ENV=test
+    - REDIS_URL=redis://redis:6379
