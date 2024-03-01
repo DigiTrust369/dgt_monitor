@@ -7,7 +7,7 @@ class Api {
   constructor(config) {
     let urls;
     if (!config || !config.rpcUrls || config.rpcUrls.length <= 0) {
-      logger.warn(`Invalid rpc urls for blockchain ${config.name}, ${config.rpcUrls}, some services may not available`);
+      logger.warn('nvalid rpc urls for blockchain');
       urls = 'http://127.0.0.1';
     }
 

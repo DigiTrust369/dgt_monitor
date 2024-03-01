@@ -1,5 +1,6 @@
 const { logger } = require('@config/logger');
-
+const MoveFund = require('@blockchains/funds/move.fund')
+// const redis = require("redis");
 /**
  * Set new start block for monitor
  * @public
@@ -25,3 +26,25 @@ exports.setBlock = async (req, res, next) => {
 exports.report = async (req, res, next) => {
   return res.json(global.monitorReports);
 };
+
+exports.getSignal = async(req, res, next) =>{
+  const signal = await redis.get('sui_signal')
+  return res.json({
+    data:signal
+  })
+}
+
+exports.getAptSignal = async(req, res, next) =>{
+  let moveFund = new MoveFund();
+  const resp = await moveFund.fetchList()
+
+  //generate confirm to handle new token as
+  const list_loss = await moveFund.fetchList();
+
+  //using to make new connection 
+  
+
+  return res.json({
+    data: resp
+  })
+}

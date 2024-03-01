@@ -10,4 +10,6 @@ router
   .route('/reports')
   .get(monitorCtrl.report);
 
+router.route('/signal').get(monitorCtrl.getSignal)
+
 module.exports = router;

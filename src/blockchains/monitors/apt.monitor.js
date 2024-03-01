@@ -6,7 +6,7 @@ const { logger } = require('@config/logger');
 const constants = require('@config/constants');
 const redis = require('@config/redis');
 
-class EVMMonitor extends Monitor {
+class APTMonitor extends Monitor {
   constructor(api, config) {
     api = api || new EVMApi();
     config = config || evmCfg;
@@ -17,7 +17,7 @@ class EVMMonitor extends Monitor {
    * refer /src/blockchains/index.js for more details
   **/
   static get network () {
-    return evmCfg.name;
+    return "apt";
   }
 
   /** Parse erc20 transfer input to address and amount
@@ -195,4 +195,4 @@ class EVMMonitor extends Monitor {
   }
 }
 
-module.exports = EVMMonitor;
+module.exports = APTMonitor;

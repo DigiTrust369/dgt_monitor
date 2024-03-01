@@ -17,7 +17,7 @@ const app = require('@config/express');
     global.redis = redis;
     global.logger = logger;
     logger.info('Establishing connection to kafka broker and run the monitor jobs.');
-    await initKafka();
+    // await initKafka();
     logger.info('Kafa connected');
     // API can start without kafka or redis, for offline used: sign transaction
     app.listen(port, () => logger.info(`Server started on port ${port} (${env})`));

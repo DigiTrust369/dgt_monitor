@@ -15,7 +15,7 @@ const {
     global.redis = redis;
     global.logger = logger;
     logger.info('Establishing connection to kafka broker and processing payments.');
-    await initKafka();
+    // await initKafka();
     // subscribe help us create the topic if not existed
     const consumer = global.kafka.client.consumer({
       groupId: kafkaCfg.groupId,
